@@ -10,11 +10,14 @@ namespace TicTacToeGame
     {
         static void Main(string[] args)
         {
-            TicTacToe objTicTac = new TicTacToe();         //Created an object of an class TicTacToe
-            objTicTac.createBoard();                      //accessing method by using class
-            char usersChoice = objTicTac.chooseUserChar();
-            Console.WriteLine("Users choice is :" + usersChoice);
-            
+           
+            char[] board=TicTacToe.createBoard();                 //calling an method by usung class name
+            Console.WriteLine(board);
+            char choose = TicTacToe.chooseUserChar();
+            Console.WriteLine("Your choice is " + choose);
+            //
+            TicTacToe.showBoard(board);
+
             Console.ReadKey();
         }
     }
