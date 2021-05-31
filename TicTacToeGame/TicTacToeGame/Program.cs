@@ -18,6 +18,9 @@ namespace TicTacToeGame
             //
             TicTacToe.showBoard(board);
 
+            //
+            int userMove = TicTacToe.getUserMove(board);
+
             Console.ReadKey();
         }
     }

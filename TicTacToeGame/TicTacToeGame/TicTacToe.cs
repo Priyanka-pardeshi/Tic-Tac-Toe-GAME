@@ -45,5 +45,24 @@ namespace TicTacToeGame
             Console.WriteLine(" " + board[7] + " | " + board[8] + " | " + board[9]);
         }
 
+        /// <summary>
+        /// Getting user move 
+        /// </summary>
+        /// <returns></returns>
+        public static int getUserMove( char [] board)
+        {
+            int[] validCells = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            while (true)
+            {
+                Console.WriteLine("What is Your next move(1-9)???");
+                int index = Convert.ToInt32(Console.ReadLine());
+                if(Array.Find<int>(validCells, elements => elements==index) !=0 && isFreeSpace(board ,index) ) 
+                return index;
+            }          
+        }
+        public static bool isFreeSpace(char[] board, int index)
+        {
+            return board[index] ==' ';
+        }
     }
 }
