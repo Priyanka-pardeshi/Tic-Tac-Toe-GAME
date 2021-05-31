@@ -15,12 +15,11 @@ namespace TicTacToeGame
             Console.WriteLine(board);
             char choose = TicTacToe.chooseUserChar();
             Console.WriteLine("Your choice is " + choose);
-            //
+            //Calling showBoard function
             TicTacToe.showBoard(board);
-
-            //
+            //Gettin user Move
             int userMove = TicTacToe.getUserMove(board);
-
+            TicTacToe.makeMove(board, userMove,choose);
             Console.ReadKey();
         }
     }
