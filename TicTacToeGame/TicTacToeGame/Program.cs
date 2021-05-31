@@ -12,6 +12,9 @@ namespace TicTacToeGame
         {
             TicTacToe objTicTac = new TicTacToe();         //Created an object of an class TicTacToe
             objTicTac.createBoard();                      //accessing method by using class
+            char usersChoice = objTicTac.chooseUserChar();
+            Console.WriteLine("Users choice is :" + usersChoice);
+            
             Console.ReadKey();
         }
     }

@@ -11,7 +11,7 @@ namespace TicTacToeGame
         /// <summary>
         /// Method to create an empty board 
         /// </summary>
-        /// <returns>And returns an created board</returns>
+        /// <returns></returns>
         public char[] createBoard()
         {
             char[] board = new char[10];
@@ -20,6 +20,12 @@ namespace TicTacToeGame
                 Console.WriteLine(board[i] = '_');
             }
             return board;
+        }
+        public char chooseUserChar()
+        {
+            Console.WriteLine("Enter your choice X or O :");
+            char userSelection = Convert.ToChar(Console.ReadLine());
+            return char.ToUpper(userSelection);
         }
     }
 }
