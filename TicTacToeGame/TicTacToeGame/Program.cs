@@ -22,6 +22,18 @@ namespace TicTacToeGame
             Random objRandom = new Random();
             return (int)(objRandom.Next() * 10) % choices;
         }
+        private static bool isWinner(char [] b , char ch)
+        {
+            return ((b[1] == ch && b[2] == ch && b[3] == ch) ||
+                (b[4] == ch && b[5] == ch && b[6] == ch) ||
+                (b[7] == ch && b[8] == ch && b[9] == ch) ||
+                (b[1] == ch && b[4] == ch && b[7] == ch) ||
+                (b[2] == ch && b[5] == ch && b[8] == ch) ||
+                (b[3] == ch && b[6] == ch && b[9] == ch) ||
+                (b[1] == ch && b[5] == ch && b[9] == ch) ||
+                (b[7] == ch && b[5] == ch && b[3] == ch)); 
+        }
+
         static void Main(string[] args)
         {
            
@@ -35,6 +47,7 @@ namespace TicTacToeGame
             int userMove = TicTacToe.getUserMove(board);
             TicTacToe.makeMove(board, userMove,choose);
             Player player = getWhoStartFirst();
+            Console.WriteLine("Check if Won:"+isWinner(board,choose));
             Console.ReadKey();
         }
     }
