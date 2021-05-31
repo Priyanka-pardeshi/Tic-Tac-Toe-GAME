@@ -34,6 +34,7 @@ namespace TicTacToeGame
             //Gettin user Move
             int userMove = TicTacToe.getUserMove(board);
             TicTacToe.makeMove(board, userMove,choose);
+            Player player = getWhoStartFirst();
             Console.ReadKey();
         }
     }
