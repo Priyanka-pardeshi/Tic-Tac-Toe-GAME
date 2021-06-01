@@ -40,6 +40,8 @@ namespace TicTacToeGame
         {
             int winnigMove = getWinningMove(board, computerLetter);
             if (winnigMove != 0) return winnigMove;
+            int userWinnigMove = getWinningMove(board, computerLetter);
+            if (userWinnigMove != 0) return userWinnigMove;
             return 0;
         }
 
