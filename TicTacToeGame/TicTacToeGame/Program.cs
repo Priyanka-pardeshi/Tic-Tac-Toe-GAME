@@ -11,6 +11,7 @@ namespace TicTacToeGame
         public const int HEAD = 0;
         public const int TAIL = 1;
         public enum Player { USER, COMPUTER };
+        public enum GameStatus { WON, FULL_BOARD, CONTINUE };
 
         private static Player getWhoStartFirst()
         {
@@ -113,24 +114,83 @@ namespace TicTacToeGame
             Array.Copy(board,boardCopy,board.Length);
             return boardCopy;
         }
+
+        //Game status
+        private static GameStatus getGameStatus(char[] board, int move, char letter, String wonMessage)
+        {
+            makeMove(board, move, letter);
+            if (isWinner(board, letter))
+            {
+                showBoard(board);
+                Console.WriteLine(wonMessage);
+                return GameStatus.WON;
+            }
+            return GameStatus.CONTINUE;
+        }
+
+        //is Board full
+        private static bool isBoardFull(char [] board)
+        {
+            for (int index = 1; index < board.Length; index++)
+            {
+                if (isFreeSpace(board, index)) return false;
+            }
+            return true;
+        }
+
+        public static void showBoard(char[] board)
+        {
+            Console.WriteLine("\n " + board[1] + " | " + board[2] + " | " + board[3]);
+            Console.WriteLine("_________________");
+            Console.WriteLine(" " + board[4] + " | " + board[5] + " | " + board[6]);
+            Console.WriteLine("_________________");
+            Console.WriteLine(" " + board[7] + " | " + board[8] + " | " + board[9]);
+        }
         static void Main(string[] args)
         {
            
-            char[] board=TicTacToe.createBoard();                 //calling an method by usung class name
+            char[] board=TicTacToe.createBoard();                 //calling an method by using class name
             Console.WriteLine(board);
-            //letter
-            char userLetter = TicTacToe.chooseUserChar();
-            char computerLetter=(userLetter=='X')?'O':'X'
+           
+            char userLetter = TicTacToe.chooseUserChar();             //user letter.
+            char computerLetter = (userLetter == 'X') ? 'O' : 'X';    //Computer letter.
             
             Console.WriteLine("Your choice is " + userLetter );       
 
-            //Calling showBoard function
-            TicTacToe.showBoard(board);
+            showBoard(board);                       
             //Gettin user Move
 
             int userMove = getUserMove(board);
             makeMove(board, userMove, userLetter);
             Player player = getWhoStartFirst();
+            
+            bool gameIsPlaying = true;
+            GameStatus gameStatus;
+            while (gameIsPlaying)
+            {
+                //player turn
+                if (player.Equals(Player.USER))
+                {
+                    //player turn
+                    showBoard(board);
+                    // int userMove = getUserMove(board);
+                    String wonMsg = "Congo you won";
+                    gameStatus = getGameStatus(board, userMove, userLetter, wonMsg);
+                    player = Player.COMPUTER;
+                }
+                else
+                {
+                    //computer turn
+                    String wonMsg = "Computer won";
+                    int computerMove = getComputerMove(board, computerLetter, userLetter);
+                    gameStatus = getGameStatus(board, computerMove, computerLetter, wonMsg);
+                    player = Player.USER;
+                }
+                if (gameStatus.Equals(GameStatus.CONTINUE)) continue;
+                gameIsPlaying = false;
+            }
+
+
 
             Console.WriteLine("Check if Winner:" + isWinner(board, userLetter));
 

@@ -36,14 +36,14 @@ namespace TicTacToeGame
         /// <summary>
         /// Method to show an board 
         /// </summary>
-        public static void showBoard(char[] board)
-        {
-            Console.WriteLine("\n " + board[1] + " | " + board[2] + " | " + board[3]);
-            Console.WriteLine("_________________");
-            Console.WriteLine(" " + board[4] + " | " + board[5] + " | " + board[6]);
-            Console.WriteLine("_________________");
-            Console.WriteLine(" " + board[7] + " | " + board[8] + " | " + board[9]);
-        }
+        //public static void showBoard(char[] board)
+        //{
+          //  Console.WriteLine("\n " + board[1] + " | " + board[2] + " | " + board[3]);
+            //Console.WriteLine("_________________");
+            //Console.WriteLine(" " + board[4] + " | " + board[5] + " | " + board[6]);
+            //Console.WriteLine("_________________");
+            //Console.WriteLine(" " + board[7] + " | " + board[8] + " | " + board[9]);
+        //}
 
        
         
