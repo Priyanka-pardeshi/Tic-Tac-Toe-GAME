@@ -45,18 +45,7 @@ namespace TicTacToeGame
             Console.WriteLine(" " + board[7] + " | " + board[8] + " | " + board[9]);
         }
 
-        public static char chooseComputerChar(char user)
-        {
-            char computerLetter;
-            if (user == 'X')
-            {
-                 computerLetter = 'O';
-                 return computerLetter;
-            }
-            else
-            {
-                return computerLetter = 'X';
-            }
-        }
+       
+        
     }
 }

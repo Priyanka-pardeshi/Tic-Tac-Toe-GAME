@@ -40,10 +40,14 @@ namespace TicTacToeGame
         {
             int winnigMove = getWinningMove(board, computerLetter);
             if (winnigMove != 0) return winnigMove;
-            int userWinnigMove = getWinningMove(board, computerLetter);
+            int userWinnigMove = getWinningMove(board, userLetter);
             if (userWinnigMove != 0) return userWinnigMove;
             int[] cornerMove = { 1, 3, 7, 9 };
             int computerMove = getRandomMoveFromList(board,cornerMove);
+            if (computerMove != 0) return computerMove;
+            if (isFreeSpace(board, 5)) return 5;  //
+            int [] sideMove = { 2, 4, 6, 8 };
+            computerMove = getRandomMoveFromList(board,sideMove);
             if (computerMove != 0) return computerMove;
             return 0;
         }
@@ -116,7 +120,8 @@ namespace TicTacToeGame
             Console.WriteLine(board);
             //letter
             char userLetter = TicTacToe.chooseUserChar();
-            char computerLetter = TicTacToe.chooseComputerChar(userLetter);
+            char computerLetter=(userLetter=='X')?'O':'X'
+            
             Console.WriteLine("Your choice is " + userLetter );       
 
             //Calling showBoard function
