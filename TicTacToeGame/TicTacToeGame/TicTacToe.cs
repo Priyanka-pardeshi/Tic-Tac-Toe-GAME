@@ -32,7 +32,7 @@ namespace TicTacToeGame
             char userSelection = Convert.ToChar(Console.ReadLine());
             return char.ToUpper(userSelection);
         }
-
+        
         /// <summary>
         /// Method to show an board 
         /// </summary>
@@ -43,6 +43,20 @@ namespace TicTacToeGame
             Console.WriteLine(" " + board[4] + " | " + board[5] + " | " + board[6]);
             Console.WriteLine("_________________");
             Console.WriteLine(" " + board[7] + " | " + board[8] + " | " + board[9]);
+        }
+
+        public static char chooseComputerChar(char user)
+        {
+            char computerLetter;
+            if (user == 'X')
+            {
+                 computerLetter = 'O';
+                 return computerLetter;
+            }
+            else
+            {
+                return computerLetter = 'X';
+            }
         }
     }
 }

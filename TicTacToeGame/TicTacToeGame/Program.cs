@@ -36,12 +36,25 @@ namespace TicTacToeGame
                 (board[7] == ch && board[5] == ch && board[3] == ch)); 
         }
 
-        private static int getComputerMove(char[] board, char computerLetter)
+        private static int getComputerMove(char[] board, char computerLetter,char userLetter)
         {
             int winnigMove = getWinningMove(board, computerLetter);
             if (winnigMove != 0) return winnigMove;
             int userWinnigMove = getWinningMove(board, computerLetter);
             if (userWinnigMove != 0) return userWinnigMove;
+            int[] cornerMove = { 1, 3, 7, 9 };
+            int computerMove = getRandomMoveFromList(board,cornerMove);
+            if (computerMove != 0) return computerMove;
+            return 0;
+        }
+
+        //Generate an Random move for computer
+        private static int getRandomMoveFromList(char [] board, int [] moves)
+        {
+            for (int index = 0; index < moves.Length;index++ )
+            {
+                if (isFreeSpace(board, moves[index])) return moves[index];
+            }
             return 0;
         }
 
@@ -101,15 +114,24 @@ namespace TicTacToeGame
            
             char[] board=TicTacToe.createBoard();                 //calling an method by usung class name
             Console.WriteLine(board);
-            char choose = TicTacToe.chooseUserChar();
-            Console.WriteLine("Your choice is " + choose);       
+            //letter
+            char userLetter = TicTacToe.chooseUserChar();
+            char computerLetter = TicTacToe.chooseComputerChar(userLetter);
+            Console.WriteLine("Your choice is " + userLetter );       
+
             //Calling showBoard function
             TicTacToe.showBoard(board);
             //Gettin user Move
+
             int userMove = getUserMove(board);
-            makeMove(board, userMove, choose);
+            makeMove(board, userMove, userLetter);
             Player player = getWhoStartFirst();
-            Console.WriteLine("Check if Winner:"+isWinner(board,choose));
+
+            Console.WriteLine("Check if Winner:" + isWinner(board, userLetter));
+
+
+            //comuter Move
+            int computeMoves = getComputerMove(board,computerLetter,userLetter);
             Console.ReadKey();
         }
     }
